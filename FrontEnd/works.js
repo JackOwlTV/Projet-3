@@ -45,41 +45,43 @@ fetch('http://localhost:5678/api/categories')
       const category = data[i];
       const button = document.createElement('button');
       button.id = 'category-' + (i + 1);
-      button.classList.add = ('elements-filter')
+      button.classList = 'elements-filter' + ' ' + button.id;
       button.innerText = category.name;
       filtres.appendChild(button);
+
+      // Variable Filtres
+      elementsFilter =  document.querySelectorAll(".elements-filter");
+      all = document.querySelector(".all");
+      objects = document.querySelector("#category-");
+      appartements = document.querySelector("#category-");
+      restaurants = document.querySelector("#category-");
+      
+      //Filtre
+      
+      for (let element of elementsFilter) {
+        element.addEventListener("click", function(){
+          console.log(figures)
+          for ( let e of elementsFilter) {
+            e.classList.remove("active");
+          }
+          this.classList.add("active");
+          
+          for (let figure of figures) {
+            if (
+              figure.getAttribute("category-") === this.getAttribute("category-") 
+            ){
+              console.log("même catégory")
+              console.log(figure.getAttribute("category-"))
+              console.log(this.getAttribute("category-"))
+              figure.style.display = "block";} 
+            else if (this === all){
+              figure.style.display = "block";} 
+            else {figure.style.display = "none";}}
+        })
+      }      
+
     }
   });
 
-
-// Variable Filtres
-elementsFilter =  document.querySelectorAll(".elements-filter");
-all = document.querySelector(".all");
-objects = document.querySelector(".objects-button");
-appartements = document.querySelector(".appartements-button");
-restaurants = document.querySelector(".restaurants-button");
-
-//Filtre
-
-for (let element of elementsFilter) {
-  element.addEventListener("click", function(){
-    console.log(figures)
-    for ( let e of elementsFilter) {
-      e.classList.remove("active");
-    }
-    this.classList.add("active");
-    for (let figure of figures) {
-      if (
-        figure.getAttribute("data-category-id") === this.getAttribute("data-category-id")
-      ){
-        console.log('même catégory')
-        console.log(figure.getAttribute('data-category-id'))
-        console.log(this.getAttribute('data-category-id'))
-        figure.style.display = "block";} 
-      else if (this === all){
-        figure.style.display = "block";} 
-      else {figure.style.display = "none";}}
-  })
-}
 }
 document.addEventListener('DOMContentLoaded', pageload, false);
