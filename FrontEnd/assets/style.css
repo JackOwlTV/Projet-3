@@ -219,3 +219,8 @@ button {
 	background-color: #1D6154;
 	color: #FFFFFF;
 }
+
+a{
+	text-decoration: none;
+	color: black;
+}
