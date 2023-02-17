@@ -101,7 +101,7 @@ label {
 	margin-bottom: 7px;
 }
 
-.user {
+#email {
 	width: 379px;
 	height: 51px;
 	background: #FFFFFF;
@@ -110,7 +110,7 @@ label {
 	margin-bottom: 30px;
 }
 
-.password {
+#password {
 	width: 379px;
 	height: 51px;
 	background: #FFFFFF;
