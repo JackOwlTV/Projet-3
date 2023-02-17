@@ -44,13 +44,13 @@ fetch('http://localhost:5678/api/categories')
     for (let i = 0; i < data.length; i++) {
       const category = data[i];
       const button = document.createElement('button');
-      button.id = 'category-' + (i + 1);
-      button.classList = 'elements-filter' + ' ' + button.id;
+      button.setAttribute('category-', (i + 1));
+      button.classList.add('element-filter', + i);
       button.innerText = category.name;
       filtres.appendChild(button);
 
       // Variable Filtres
-      elementsFilter =  document.querySelectorAll(".elements-filter");
+      elementsFilter =  document.querySelectorAll(".element-filter");
       all = document.querySelector(".all");
       objects = document.querySelector("#category-");
       appartements = document.querySelector("#category-");
@@ -60,7 +60,6 @@ fetch('http://localhost:5678/api/categories')
       
       for (let element of elementsFilter) {
         element.addEventListener("click", function(){
-          console.log(figures)
           for ( let e of elementsFilter) {
             e.classList.remove("active");
           }
@@ -70,9 +69,6 @@ fetch('http://localhost:5678/api/categories')
             if (
               figure.getAttribute("category-") === this.getAttribute("category-") 
             ){
-              console.log("même catégory")
-              console.log(figure.getAttribute("category-"))
-              console.log(this.getAttribute("category-"))
               figure.style.display = "block";} 
             else if (this === all){
               figure.style.display = "block";} 

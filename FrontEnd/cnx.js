@@ -1,18 +1,18 @@
 function pageload(){
 
 
-    const userInput = document.querySelector("#user");
+    const emailInput = document.querySelector("#email");
     const passwordInput = document.querySelector("#password");
     const connectButton = document.querySelector("#connexion_button");
     
     let state = {
-      user: "",
+      email: "",
       password: "",
       error: ""
     };
     
-    userInput.addEventListener("input", event => {
-      state.user = event.target.value;
+    emailInput.addEventListener("input", event => {
+      state.email = event.target.value;
     });
     
     passwordInput.addEventListener("input", event => {
@@ -23,13 +23,13 @@ function pageload(){
       event.preventDefault();
     
       try {
-        const response = await fetch("http://localhost:5678/api/users/login", {
+        const response = await fetch("http://127.0.0.1:5678/api/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            user: state.user,
+            email: state.email,
             password: state.password
           })
         });
@@ -38,7 +38,7 @@ function pageload(){
         if (data.error) {
           state.error = data.error;
         } else {
-          // navigate to next page or display success message
+          location.href = "index.html"
         }
       } catch (error) {
         console.error(error);

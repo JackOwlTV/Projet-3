@@ -151,6 +151,7 @@ label {
 }
 
 footer {
+	margin-top: auto;
 	height: 35px;
 	background: #FFFFFF;
 	margin-top: 330px;
