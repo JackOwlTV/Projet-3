@@ -9,10 +9,34 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/af55e32715.js" crossorigin="anonymous"></script>
 	<script src="works.js"></script>
 </head>
 <body>
+<div class="edition">
 	
+	<a id="édition" href="#modal1" class="modal-trigger">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>Mode édition</p>
+	</a>
+	<button id="publier">publier les changements</button>
+
+</div>
+
+<aside id="modal1" class="modal-container" aria-hidden="true" role="dialog" >
+	<div class="overlay modal-trigger">
+			<div class="modal-wrapper">
+			<button class="close-modal modal-trigger" style="display: contents;"><i class="fa-solid fa-xmark"></i></button>
+			<h3>Galerie Photo</h3>
+			<figure id="galerie"></figure>
+			<button id="add">Ajouter une photo</button>
+			<h6>Supprimer la galerie</h6>
+		</div>
+	</div>
+</aside>
+
+<script src="app.js"></script>
+
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
