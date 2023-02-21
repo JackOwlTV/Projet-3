@@ -258,16 +258,19 @@ a{
 }
 
 .modal-container{
-	display: none;
+	visibility: hidden;
 	position: fixed;
 	top: 0;
 	width: 100vw;
 	height: 100vh;
+	transition: visibility 0.4s;
 }
 .modal-container.actives{
-	display: block;
+	transition: visibility 0s;
+	visibility: visible;
 }
 .overlay {
+	opacity: 0;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.3);
@@ -276,8 +279,13 @@ a{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	transition: opcaity 0.4s 0.2s ease-out;
 }
 
+.modal-container.actives .overlay{
+	opacity: 1;
+	transition: opcaity 0.4s ease-out;
+}
 .modal-wrapper {
 	background: #fff;
 	width: 630px;
@@ -296,6 +304,7 @@ h3 {
 	font-style: normal;
 	font-weight: 400;
 	font-size: 26px;
+	margin-bottom: 46px;
 }
 
 #add {
@@ -318,6 +327,9 @@ h6 {
 	color: #D65353;
 	margin-top: 32px;
 }
+.close-modal{
+	cursor: pointer;
+}
 
 .fa-solid, .fas {
 	font-weight: 900;
@@ -326,4 +338,21 @@ h6 {
 	display: flex;
 	margin-bottom: 10px;
 	color: #000;
+}
+
+.galerie {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: space-between;
+	width: 437px;
+	height: 332px;
+	justify-content: space-between;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 47px;
+}
+
+.edit {
+	width: 78.12px;
+	height: 104.08px;
 }
