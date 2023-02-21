@@ -13,7 +13,7 @@
 	<script src="works.js"></script>
 </head>
 <body>
-<div class="edition">
+<div class="edition hidden">
 	
 	<a id="édition" href="#modal1" class="modal-trigger">
 		<i class="fa-regular fa-pen-to-square"></i>
@@ -43,7 +43,8 @@
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li><a href="#contact"> contact</a></li>
-			<li><a href="connexion.html">login</a></li>
+			<li><a class="login" href="connexion.html">login</a></li>
+			<li><a class="hidden">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -62,7 +63,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="projet">	
+			<h2>Mes Projets</h2>
+			<a class="hidden" id="projet" href="#modal1" class="modal-trigger">
+				<i class="fa-regular fa-pen-to-square"></i>
+				<p>modifier</p>
+			</a>
+		</div>
 		<div class="filtres">
 			<button class="element-filter all active" >Tous</button>
 		</div>

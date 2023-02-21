@@ -38,7 +38,8 @@ function pageload(){
         if (data.error) {
           state.error = data.error;
         } else {
-          location.href = "index.html"
+          location.href = "index.html";
+          sessionStorage.setItem("token", data.token);
         }
       } catch (error) {
         console.error(error);
