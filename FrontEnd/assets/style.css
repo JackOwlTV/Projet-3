@@ -137,20 +137,20 @@ li:hover {
 	margin-bottom: 1em;
 }
 .gallery {
-	width: 100%;
+	width: 90%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	margin: auto;
 }
 
 .gallery img {
-	width: 100%;
-
+	width: 310px;
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -415,4 +415,8 @@ footer {
 	background: #FFFFFF;
 	margin-top: 30px;
 	padding-top: 25px;
+}
+
+#footer{
+	padding: 0 100px;
 }
