@@ -73,9 +73,16 @@ for (let trash of trashIcons) {
         fetch(`http://localhost:5678/api/works/${workId}`, {
         method: "DELETE",
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${userToken}`,
             },
         });
+        const figures = document.querySelectorAll("figure");
+        
+        for (let figure of figures) {
+            if (figure.getAttribute("data-id") === workId) {
+            figure.remove()
+            }
+        }
     });
 }
 

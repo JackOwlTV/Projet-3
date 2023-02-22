@@ -220,6 +220,7 @@ button {
 	width: 100px;
 	height: 37px;
 	text-align: center;
+	cursor: pointer;
 }
 
 button:hover {
@@ -379,12 +380,11 @@ h3 {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-content: space-between;
+	align-content: start;
 	width: 437px;
 	height: 400px;
-	justify-content: space-between;
 	border-bottom: 1px solid #B3B3B3;
-	padding-bottom: 47px;
+	padding-bottom: 20px;
 }
 
 .edit {
@@ -395,11 +395,13 @@ h3 {
 .fa-solid.fa-trash-can {
 	color: #fff;
 	background: #000000;
-	height: auto;
+	height: 14px;
+	width: 14px;
 	border-radius: 2px;
 	font-size: 9px;
+	top: 5px;
+	right: 5px;
 	position: absolute;
-	margin-top: 6px;
 	cursor: pointer;
 }
 
@@ -438,4 +440,10 @@ footer {
 
 #footer{
 	padding: 0 100px;
+}
+
+aside div figure {
+	position: relative;
+	margin-right: 9px;
+	margin-bottom: 10px;
 }

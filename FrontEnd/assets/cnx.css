@@ -21,6 +21,7 @@ time, mark, audio, video {
 
 body {
 	margin: auto;
+	width: 1440px;
 	font-family: 'Work Sans';
 	font-size: 14px;
 	background-color: #FFFEF8;
@@ -72,7 +73,13 @@ nav li {
 	font-size: 1.2em;
 }
 
+nav ul li img {
+	width: 30px;
+}
 
+.login{
+	font-weight: bold;
+}
 .cnx {
 	width: 390px;
 	height: 360px;
