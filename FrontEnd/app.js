@@ -47,6 +47,8 @@ function toggleModal(){
             figure.appendChild(figcaption);
 
         }
+
+        figureDelete();
     })
     .catch(error => console.error(error));
     modalContainer.classList.toggle("actives")

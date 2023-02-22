@@ -28,9 +28,11 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
@@ -48,19 +50,27 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
+	max-width: 1440px;
+	font-family: 'Work Sans';
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
+main {
+	width: 1140px;
+	margin: auto;
+}
+
 section {
-	margin: 50px 0
+	margin: 130px 0 80px 0;
 }
 
 h1{
@@ -92,7 +102,7 @@ nav ul {
 
 }
 nav li {
-	padding: 0 10px;
+	padding: 0 100px;
 	font-size: 1.2em;
 }
 
@@ -184,7 +194,6 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
 }
 
 .filtres {
@@ -234,6 +243,7 @@ a{
 	height: 49px;
 	align-items: center;
 	position: relative;
+	width: 1440px;
 }
 
 .hidden{
@@ -379,7 +389,7 @@ h6 {
 	color: #000;
 	font-size: 16px;
 	align-items: center;
-	justify-content: space-between;
+	margin-left: 22px;
 	width: 125px;
 	cursor: pointer;
 	margin-bottom: 31px;
@@ -393,4 +403,15 @@ h6 {
 
 .login{
 	display: block;
+}
+
+#edit{
+	margin-right: 11px;
+}
+
+footer {
+	height: 35px;
+	background: #FFFFFF;
+	margin-top: 30px;
+	padding-top: 25px;
 }
