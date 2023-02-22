@@ -84,6 +84,11 @@ nav li {
 	margin-top: 150px;
 }
 
+.error-connect {
+	color: #c0001a;
+	margin-top: 15px;
+}
+
 #login {
 	margin-top: 40px;
 	display: flex;
@@ -132,6 +137,7 @@ label {
 	font-weight: 700;
 	font-size: 16px;
 	text-align: center;
+	cursor: pointer;
 }
 
 .active {

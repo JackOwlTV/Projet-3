@@ -15,7 +15,7 @@
 <body>
 <div class="edition hidden">
 	
-	<a id="édition" href="#modal1" class="modal-trigger">
+	<a id="édition" href="#edit-works" data-modal="edit-works" class="modal-trigger">
 		<i class="fa-regular fa-pen-to-square"></i>
 		<p>Mode édition</p>
 	</a>
@@ -23,28 +23,28 @@
 
 </div>
 
-<aside data-modal="modal1" class="modal-container" aria-hidden="true" role="dialog" >
+<aside data-modal="edit-works" class="modal-container">
 	<div class="overlay modal-trigger">
 			<div class="modal-wrapper">
-			<button class="close-modal modal-trigger" style="display: contents;"><i class="fa-solid fa-xmark modal-trigger"></i></button>
+			<i class="fa-solid fa-xmark modal-trigger close-modal"></i>
 			<h3>Galerie Photo</h3>
-			<figure class="galerie"></figure>
-			<button id="add">Ajouter une photo</button>
-			<h6>Supprimer la galerie</h6>
+			<figure class="galerie">
+
+			</figure>
+			<button class="btn-submit-1 add-works">Ajouter une photo</button>
+			<h6 class="btn-submit-2 delete-all-works">Supprimer la galerie</h6>
 		</div>
 	</div>
 </aside>
-
-<script src="app.js"></script>
 
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
-			<li><a href="index.html">projets</a></li>
+			<li><a href="#portfolio">projets</a></li>
 			<li><a href="#contact"> contact</a></li>
-			<li><a class="login" href="connexion.html">login</a></li>
-			<li><a class="hidden">logout</a></li>
+			<li class="login"><a href="connexion.html">login</a></li>
+			<li class="hidden"><a>logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -65,7 +65,7 @@
 	<section id="portfolio">
 		<div class="projet">	
 			<h2>Mes Projets</h2>
-			<a class="hidden" id="projet" href="#modal1" class="modal-trigger">
+			<a data-modal="edit-works" class="hidden modal-trigger" id="projet" href="#modal1" >
 				<i id="edit" class="fa-regular fa-pen-to-square"></i>
 				<p>modifier</p>
 			</a>
@@ -99,5 +99,6 @@
 		</ul>
 	</nav>
 </footer>
+<script src="app.js"></script>
 </body>
 </html>

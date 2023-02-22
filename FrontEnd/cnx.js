@@ -4,6 +4,8 @@ function pageload(){
     const emailInput = document.querySelector("#email");
     const passwordInput = document.querySelector("#password");
     const connectButton = document.querySelector("#connexion_button");
+    let errorConnect = document.querySelector(".error-connect");
+
     
     let state = {
       email: "",
@@ -37,7 +39,13 @@ function pageload(){
     
         if (data.error) {
           state.error = data.error;
-        } else {
+        } 
+        if (response.status === 401) {
+          errorConnect.innerHTML = "Mot de passe incorrect";
+        } else if (response.status === 404) {
+          errorConnect.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+        }
+        else {
           location.href = "index.html";
           sessionStorage.setItem("token", data.token);
         }
@@ -45,7 +53,6 @@ function pageload(){
         console.error(error);
       }
     });
-    
     
 }
 document.addEventListener('DOMContentLoaded', pageload, false);
