@@ -31,8 +31,32 @@
 			<figure class="galerie">
 
 			</figure>
-			<button class="btn-submit-1 add-works">Ajouter une photo</button>
+			<button data-modal="add-works" class="btn-submit-1 add-works">Ajouter une photo</button>
 			<h6 class="btn-submit-2 delete-all-works">Supprimer la galerie</h6>
+		</div>
+	</div>
+</aside>
+
+<aside data-modal="add-works" class="modal-container">
+	<div class="overlay modal-trigger">
+			<div class="modal-wrapper">
+				<div class="close-and-return">
+					<i class="fa-solid fa-arrow-left"></i>
+					<i class="fa-solid fa-xmark modal-trigger close-modal"></i>
+				</div>
+			<h3>Ajout Photo</h3>
+			<div class="ajout-photo">
+				<i class="fa-regular fa-image"></i>
+				<button class="submit-img">+ Ajouter photo</button>
+				<h6 class="format-img">jpg, png : 4 mo max</h6>
+			</div>
+			<form id="title-and-category" action="">
+				<label for="text">Titre</label>
+				<input type="text" class="input">
+				<label for="tex">Catégorie</label>
+				<input type="">
+			</form>
+			<button class="btn-submit-3 valid-works">Valider</button>
 		</div>
 	</div>
 </aside>
