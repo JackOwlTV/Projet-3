@@ -2,21 +2,21 @@ const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
 const modifier = document.querySelector("#projet")
+const modalContainer = document.querySelector(".modal-container");
+const modalTriggers = document.querySelectorAll(".modal-trigger");
+const modalDelete = document.querySelector(".delete-works-modal");
+const modalAdd = document.querySelector(".add-works-modal");
+const deletAllWorksBtn = document.querySelector(".delete-all-works");
+const modalReturn = document.querySelector(".fa-arrow-left");
+const openModalAdd = document.querySelector(".add-works");
+
+
 if (userToken) {
     for (let element of hiddenElements) {
       element.classList.remove("hidden");
     }
     login.style.display = "none";
 }
-
-const modalContainer = document.querySelector(".modal-container");
-const modalTriggers = document.querySelectorAll(".modal-trigger");
-const modalDelete = document.querySelector(".delete-works-modal");
-const modalAdd = document.querySelector(".add-works-modal");
-const deletAllWorksBtn = document.querySelector(".delete-all-works");
-
-const modalReturn = document.querySelector(".fa-arrow-left");
-const openModalAdd = document.querySelector(".add-works");
 
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
 openModalAdd.addEventListener("click", function(){
@@ -61,46 +61,21 @@ fetch('http://localhost:5678/api/works')
 
     }
         initDeleteWorks();
-/*     figureDelete();
- */})
+})
 .catch(error => console.error(error));
 
-function toggleModal(){
-    
-    for (let button of modalTriggers) {
-        button.addEventListener("click", function () {
-            modalContainer.classList.remove("actives");
-            if (
-                modalContainer.getAttribute("data-modal") ===
-                button.getAttribute("data-modal")
-            ) {
-                modalContainer.classList.add("actives");
-            }  
-        })
-    }
+for (let button of modalTriggers) {
+    button.addEventListener("click", function () {
+        modalContainer.classList.remove("actives");
+        if (
+            modalContainer.getAttribute("data-modal") ===
+            button.getAttribute("data-modal")
+        ) {
+            modalContainer.classList.add("actives");
+        }  
+    })
 }
     
-
-/* function figureDelete(){
-
-for (let trash of trashIcons) {
-    trash.addEventListener("click", function () {
-        const workId = trash.getAttribute("data-id");
-        fetch(`http://localhost:5678/api/works/${workId}`, {
-        method: "DELETE",
-            headers: {
-                Authorization: `Bearer ${userToken}`,
-            },
-        });
-        const figures = document.querySelectorAll("figure");
-        
-        for (let figure of figures) {
-            if (figure.getAttribute("data-id") === workId) {
-            figure.remove()
-            }
-        }
-    });
-} */
 function initDeleteWorks() {
     // pour un travail
     for (let trash of trashIcons) {
