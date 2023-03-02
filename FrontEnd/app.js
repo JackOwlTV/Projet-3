@@ -11,11 +11,9 @@ if (userToken) {
 
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
-const modalAddwork = document.querySelector(".modal-container-add");
-const modalTriggersAdd = document.querySelector(".add-trigger");
+
 
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
-modalTriggersAdd.forEach(trigger => trigger.addEventListener("click", addWorks));
 
 let trashIcons = [];
 
@@ -68,20 +66,6 @@ function toggleModal(){
 }
 }
     
-
-function addWorks(){
-    for(let add of modalTriggersAdd) {
-        add.addEventListener("click", function() {
-            modalAddwork.classList.remove("actives");
-            if (
-                modalAddwork.getAttribute("data-modal") ===
-                add.getAttribute("data-modal")
-            ) {
-                modalAddwork.classList.add("actives");
-            }
-    })
-}
-}
 
 function figureDelete(){
 
