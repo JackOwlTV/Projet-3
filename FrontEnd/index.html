@@ -31,14 +31,14 @@
 			<figure class="galerie">
 
 			</figure>
-			<button data-modal="add-works" class="btn-submit-1 add-works">Ajouter une photo</button>
+			<button data-modal="add-works" class="btn-submit-1 add-works add-trigger">Ajouter une photo</button>
 			<h6 class="btn-submit-2 delete-all-works">Supprimer la galerie</h6>
 		</div>
 	</div>
 </aside>
 
-<aside data-modal="add-works" class="modal-container">
-	<div class="overlay modal-trigger">
+<aside data-modal="add-works" class="modal-container-add">
+	<div class="overlay add-trigger">
 			<div class="modal-wrapper">
 				<div class="close-and-return">
 					<i class="fa-solid fa-arrow-left"></i>
@@ -53,8 +53,13 @@
 			<form id="title-and-category" action="">
 				<label for="text">Titre</label>
 				<input type="text" class="input">
-				<label for="tex">Catégorie</label>
-				<input type="">
+				<label for="categorie">Catégorie</label>
+				<select name="categorie" id="categorie">
+					<option value=""></option>
+					<option value="Object" id="1">Object</option>
+					<option value="Appartements" id="2">Appartements</option>
+					<option value="Hotels" id="3">Hotels et restaurants</option>
+				</select>
 			</form>
 			<button class="btn-submit-3 valid-works">Valider</button>
 		</div>

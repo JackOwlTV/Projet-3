@@ -304,6 +304,21 @@ a{
 	transition: visibility 0s;
 	visibility: visible;
 }
+
+.modal-container-add{
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	transition: visibility 0.4s;
+}
+
+.modal-container-add.actives{
+	transition: visibility 0s;
+	visibility: visible;
+}
+
 .overlay {
 	opacity: 0;
 	width: 100%;
@@ -321,6 +336,12 @@ a{
 	opacity: 1;
 	transition: opcaity 0.4s ease-out;
 }
+
+.modal-container-add.actives .overlay{
+	opacity: 1;
+	transition: opcaity 0.4s ease-out;
+}
+
 .modal-wrapper {
 	background: #fff;
 	width: 630px;
@@ -532,4 +553,20 @@ label {
 	font-weight: 700;
 	font-size: 14px;
 	color: #FFFFFF;
+}
+
+#categorie {
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	height: 51px;
+	padding: 16px;
+}
+
+option {
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
 }
