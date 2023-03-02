@@ -570,3 +570,14 @@ option {
 	font-size: 14px;
 	line-height: 16px;
 }
+
+.fa-arrow-left{
+	cursor: pointer;
+}
+
+.delete-all-works{
+	cursor: pointer;
+}
+.inactif{
+	display: none;
+}
