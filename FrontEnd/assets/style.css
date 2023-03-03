@@ -571,13 +571,20 @@ option {
 	line-height: 16px;
 }
 
-.fa-arrow-left{
+.cursor{
 	cursor: pointer;
 }
 
-.delete-all-works{
-	cursor: pointer;
-}
 .inactif{
 	display: none;
+}
+
+.modal-container .add-works-modal form select {
+	outline-color: #8EAFA6;
+	padding: 12px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	background-repeat: no-repeat;
+	background-position: right 12px top 50%;
+	background: #FFFFFF;box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);border: none;
+	height: 51px;
 }

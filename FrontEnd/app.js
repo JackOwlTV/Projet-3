@@ -1,6 +1,7 @@
 const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
+const logout = document.querySelector(".logout");
 const modifier = document.querySelector("#projet")
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
@@ -9,6 +10,8 @@ const modalAdd = document.querySelector(".add-works-modal");
 const deletAllWorksBtn = document.querySelector(".delete-all-works");
 const modalReturn = document.querySelector(".fa-arrow-left");
 const openModalAdd = document.querySelector(".add-works");
+const select = document.querySelector("select");
+
 
 
 if (userToken) {
@@ -19,6 +22,7 @@ if (userToken) {
 }
 
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
+
 openModalAdd.addEventListener("click", function(){
     modalAdd.classList.remove("inactif");
     modalDelete.classList.add("inactif");
@@ -30,6 +34,10 @@ modalReturn.addEventListener("click", function(){
 })
 
 let trashIcons = [];
+let response = [];
+let data = [];
+let galerie = [];
+let figure = [];
 
 fetch('http://localhost:5678/api/works')
     .then(response => response.json())
@@ -64,16 +72,21 @@ fetch('http://localhost:5678/api/works')
 })
 .catch(error => console.error(error));
 
-for (let button of modalTriggers) {
-    button.addEventListener("click", function () {
-        modalContainer.classList.remove("actives");
-        if (
-            modalContainer.getAttribute("data-modal") ===
-            button.getAttribute("data-modal")
-        ) {
-            modalContainer.classList.add("actives");
-        }  
-    })
+
+
+function toggleModal(){
+    
+    for (let button of modalTriggers) {
+        button.addEventListener("click", function () {
+            modalContainer.classList.remove("actives");
+            if (
+                modalContainer.getAttribute("data-modal") ===
+                button.getAttribute("data-modal")
+            ) {
+                modalContainer.classList.add("actives");
+            }  
+        })
+    }
 }
     
 function initDeleteWorks() {
@@ -94,7 +107,7 @@ function initDeleteWorks() {
             deleteWork(workId);
           }
           galerie.innerHTML = "";
-          gallery.innerHTML = "";
+          figure.innerHTML = "";
           console.log("Tous les travaux ont été supprimés");
           if (!response.ok) {
             throw new Error("Erreur lors de la suppression des éléments");
@@ -133,8 +146,23 @@ async function deleteWork(workId) {
     } catch (error) {
       console.error(error);
     }
-  }
+}
+function getCategoryOnSelect() {
+  fetch("http://localhost:5678/api/categories")
+  .then(response => response.json())
+  .then(data => {
+  for (let i in data) {
+  const option = document.createElement("option");
+  option.setAttribute("value", data[i].id);
+  option.innerHTML = data[i].name;
 
+  select.append(option);
+}
+})
+.catch(error => console.error(error));
+}
+
+getCategoryOnSelect(); 
 
 /* Si l'on click sur le bouton ajouter une photo cela fais apparaitre la seconde modal
     Changer l'input categorie par l'élément pertinant (demander au mentor ou l'élève)
