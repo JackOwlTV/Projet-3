@@ -41,22 +41,27 @@
 					<i class="fa-solid fa-arrow-left cursor"></i>
 					<i class="fa-solid fa-xmark modal-trigger close-modal"></i>
 				</div>
+			
 			<h3>Ajout Photo</h3>
-			<div class="ajout-photo">
-				<i class="fa-regular fa-image"></i>
-				<button class="submit-img">+ Ajouter photo</button>
-				<h6 class="format-img">jpg, png : 4 mo max</h6>
+			<form id="title-and-category" class="upload-edit-gallery" action="">
+			<div class="ajout-photo upload-image-zone">
+				<i class="fa-regular fa-image hidden-to-preview"></i>
+				<label title="Ajouter une photo" class="hidden-to-preview special" for="file-input">+ Ajouter photo</label>
+				<input type="file" id="file-input" class="image-input" name="fileInput">
+				<h6 class="hidden-to-preview format-img">jpg, png : 4 mo max</h6>
+				<img class="preview-image" src="./assets/icons/logo.png" alt="">
 			</div>
-			<form id="title-and-category" action="">
-				<label for="text">Titre</label>
-				<input type="text" class="input">
-				<label for="categorie">Catégorie</label>
-                <select name="categories" id="categories">
-                    <option value="no-value" disabled selected>Sélectionner une catégorie</option>
-                    <!-- Via API -->
-                </select> 
+			<div class="titrecategeorie">
+					<label for="title-input">Titre</label>
+					<input id="title-input" type="text" class="input" name="title">
+					<label for="categorie">Catégorie</label>
+					<select name="categories" id="categories">
+						<option value="no-value" disabled selected>Sélectionner une catégorie</option>
+						<!-- Via API -->
+					</select> 
+			</div>
+			<button class="btn-submit-3 valid-works confirm-add-work-button">Valider</button>
 			</form>
-			<button class="btn-submit-3 valid-works">Valider</button>
 			</div>
 	</div>
 </aside>

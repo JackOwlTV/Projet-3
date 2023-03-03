@@ -1,4 +1,6 @@
 // récupération de l'api
+const galleryGrid = document.querySelector(".gallery");
+
 let figures = [];
 let elementsFilter = [];
 let all = [];
