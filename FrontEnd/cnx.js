@@ -46,7 +46,7 @@ function pageload(){
           errorConnect.innerHTML = "Erreur dans l’identifiant ou le mot de passe";
         }
         else {
-          location.href = "index.html";
+          location.href = "index.html#edit-works";
           sessionStorage.setItem("token", data.token);
         }
       } catch (error) {

@@ -1,12 +1,12 @@
 // récupération de l'api
+
 let figures = [];
 let elementsFilter = [];
 let all = [];
 let objects = [];
 let appartements = [];
 let restaurants = [];
-
-function pageload(){
+let galleryGrid = "" ;
   
 fetch('http://localhost:5678/api/works')
 
@@ -18,7 +18,7 @@ fetch('http://localhost:5678/api/works')
         let figure = document.createElement("figure");
         let img = document.createElement("img"); 
         let figcaption = document.createElement("figcaption");
-        let gallery = document.querySelector(".gallery");
+        let galleryGrid = document.querySelector(".gallery");
 
         figure.setAttribute("category-", data[i].categoryId);
         img.setAttribute("src", data[i].imageUrl);
@@ -27,7 +27,7 @@ fetch('http://localhost:5678/api/works')
 
         figures.push(figure);
 
-        gallery.appendChild(figure);
+        galleryGrid.appendChild(figure);
         figure.appendChild(img);
         figure.appendChild(figcaption);
 
@@ -78,6 +78,3 @@ fetch('http://localhost:5678/api/categories')
 
     }
   });
-
-}
-document.addEventListener('DOMContentLoaded', pageload, false);
