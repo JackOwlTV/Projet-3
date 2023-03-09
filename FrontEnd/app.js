@@ -21,6 +21,7 @@ const confirmAddWorkButton = document.querySelector(".confirm-add-work-button");
 const allowedExtensions = ["jpg", ".jpeg", ".png"];
 const maxFileSize = 4 * 1024 * 1024; //4Mo
 const editGalleryGrid = document.querySelector(".galerie");
+const galleryGrid = document.querySelector(".gallery");
 const formAddWorks = document.querySelector(".upload-edit-gallery");
 
 
@@ -44,7 +45,7 @@ modalReturn.addEventListener("click", function(){
     modalDelete.classList.remove("inactif");
 })
 
-let trashIcons = [];
+const trashIcons = [];
 let response = [];
 let data = [];
 let galerie = [];
@@ -108,7 +109,7 @@ async function getWorks() {
     figure.setAttribute("category-", data[i].categoryId);
     figure.setAttribute("data-id", data[i].id);
     img.classList.add("edit");
-    trashIcon.classList = ("fa-solid" + " " + "fa-trash-can");
+    trashIcon.classList.add("fa-solid", "fa-trash-can");
     trashIcon.setAttribute("data-id", data[i].id);
     img.setAttribute("src", data[i].imageUrl);
     img.setAttribute("crossorigin", "anonymous");
@@ -117,9 +118,7 @@ async function getWorks() {
     trashIcons.push(trashIcon);
 
     galerie.append(figure);
-    figure.append(img, figcaption, trashIcons);
-
-
+    figure.append(img, figcaption, trashIcon);
 
 }
 
@@ -164,8 +163,8 @@ function initDeleteWorks() {
             const workId = data[i].id;
             deleteWork(workId);
           }
-          galerie.innerHTML = "";
-          figure.innerHTML = "";
+          galleryGrid.innerHTML = "";
+          editGalleryGrid.innerHTML = "";
           console.log("Tous les travaux ont été supprimés");
           if (!response.ok) {
             throw new Error("Erreur lors de la suppression des éléments");
@@ -205,6 +204,7 @@ async function deleteWork(workId) {
       console.error(error);
     }
 }
+
 
 function getCategoryOnSelect() {
   fetch("http://localhost:5678/api/categories")
