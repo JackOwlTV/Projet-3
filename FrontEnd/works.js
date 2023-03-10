@@ -15,12 +15,13 @@ fetch('http://localhost:5678/api/works')
 // génération des projets via l'api
     for (let i = 0; i < data.length; i++) {
 
-        let figure = document.createElement("figure");
-        let img = document.createElement("img"); 
-        let figcaption = document.createElement("figcaption");
-        let galleryGrid = document.querySelector(".gallery");
+        figure = document.createElement("figure");
+        img = document.createElement("img"); 
+        figcaption = document.createElement("figcaption");
+        galleryGrid = document.querySelector(".gallery");
 
         figure.setAttribute("category-", data[i].categoryId);
+        figure.setAttribute("data-id", data[i].id);
         img.setAttribute("src", data[i].imageUrl);
         img.setAttribute("crossorigin", "anonymous");
         figcaption.innerHTML = data[i].title;

@@ -1,3 +1,6 @@
+const figuresWorks = document.querySelectorAll("figure.works");
+
+
 const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
@@ -39,14 +42,21 @@ openModalAdd.addEventListener("click", function(){
     modalDelete.classList.add("inactif");
 })
 
-modalReturn.addEventListener("click", function(){
+/* modalReturn.addEventListener("click", function(){
     modalAdd.classList.add("inactif");
     modalDelete.classList.remove("inactif");
-})
+}) */
+
+function closeModal() {
+  modalAdd.classList.add("inactif");
+  modalDelete.classList.remove("inactif");
+}
+
+modalReturn.addEventListener("click", closeModal);
+
 
 let trashIcons = [];
 let response = [];
-let data = [];
 let galerie = [];
 let figure = [];
 
@@ -119,8 +129,6 @@ async function getWorks() {
     galerie.append(figure);
     figure.append(img, figcaption, trashIcon);
 
-
-
 }
 
 initDeleteWorks();
@@ -156,23 +164,20 @@ function initDeleteWorks() {
       });
     }
   
+
     // pour tous les travaux
     deletAllWorksBtn.addEventListener("click", async function () {
+
       if (confirm("Êtes-vous sûr de vouloir supprimer tous les travaux ?")) {
-        try {
-          for (let i in data) {
-            const workId = data[i].id;
-            deleteWork(workId);
+        for (let trash of trashIcons) {
+          trash.click();
+
           }
+
           galleryGrid.innerHTML = "";
           figure.innerHTML = "";
           console.log("Tous les travaux ont été supprimés");
-          if (!response.ok) {
-            throw new Error("Erreur lors de la suppression des éléments");
-          }
-        } catch (error) {
-          console.error(error);
-        }
+
       }
     });
 }
@@ -275,6 +280,8 @@ formAddWorks.addEventListener("submit", async function (event) {
         };
 
         figure.setAttribute("category-", select.value);
+        figure.setAttribute("data-id", select.value);
+
         img.setAttribute("alt", titleInput.value);
         figcaption.innerHTML = titleInput.value;
 
@@ -285,8 +292,9 @@ formAddWorks.addEventListener("submit", async function (event) {
           work.remove();
         }
         removePreviewImage();
-        backToDeleteWorksModal();
-        console.log(`${titleInput.value} a bien été ajouté aux travaux`);
+        closeModal();
+/*         console.log(`${titleInput.value} a bien été ajouté aux travaux`);
+ */     
         titleInput.value = "";
         select.value = "no-value";
         editGalleryGrid.innerHTML = "";
