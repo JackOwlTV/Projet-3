@@ -49,6 +49,9 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
+/** CSS **/
+
 body {
 	margin: auto;
 	max-width: 1440px;
@@ -56,6 +59,7 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -87,34 +91,43 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
+
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
+
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
+
 nav li {
+
 	padding: 0 10px;
 	font-size: 1.2em;
 }
 
 li a:hover {
+
     color: #B1663C;
 }
 
 nav ul li img {
+
 	width: 30px;
 }
+
+
 #introduction {
+
 	display: flex;
 	align-items: center;
 }
@@ -141,36 +154,8 @@ nav ul li img {
 	text-align: center;
 	margin-bottom: 1em;
 }
-.gallery {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-}
 
-.gallery figure {
-	width: 100%;
-	transition: 0.3s;
-	cursor: pointer;
-}
-
-.gallery  figure:hover {
-    width: 100%;
-    transform: scale(1.01);
-    transition: 0.3s;
-}
-.gallery figure img {
-	width: 100%;
-	height: 407px;
-	object-fit: cover;
-}
-
-.gallery  figure figcaption {
-	padding: 7px 0 0;
-}
+/* Formulaire de contact */
 
 #contact {
 	width: 50%;
@@ -220,6 +205,44 @@ footer nav ul {
 	justify-content: flex-end;
 }
 
+
+/* Les Projets */
+
+.gallery {
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.gallery figure {
+	width: 100%;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.gallery  figure:hover {
+    width: 100%;
+    transform: scale(1.01);
+    transition: 0.3s;
+}
+.gallery figure img {
+	width: 100%;
+	height: 407px;
+	object-fit: cover;
+}
+
+.gallery  figure figcaption {
+	padding: 7px 0 0;
+}
+
+/* Les Filtres */
+
 .filtres {
 	display: flex;
 	justify-content: center;
@@ -257,6 +280,8 @@ button:hover {
 	width: 198px;
 }
 
+/* Filtre actif */
+
 .active {
 	background-color: #1D6154;
 	color: #FFFFFF;
@@ -267,6 +292,8 @@ button:hover {
     color: #FFFFFF;
     transition: 0.3s all;
 }
+
+/* Mode Édition */
 
 a{
 	text-decoration: none;
@@ -283,6 +310,7 @@ a{
 	align-items: center;
 	position: relative;
 	width: 1440px;
+
 }
 
 .hidden{
@@ -311,6 +339,26 @@ a{
 	margin-left: 21px;
 }
 
+#projet {
+	display: flex;
+	flex-direction: row;
+	color: #000;
+	font-size: 16px;
+	align-items: center;
+	margin-left: 22px;
+	width: 125px;
+	cursor: pointer;
+	margin-bottom: 31px;
+	margin-left: 31px;
+}
+
+.projet {
+	display: flex;
+	justify-content: center;
+}
+
+/* Modal */
+
 .modal-container{
 	visibility: hidden;
 	position: fixed;
@@ -319,24 +367,12 @@ a{
 	height: 100vh;
 	transition: visibility 0.4s;
 }
+
 .modal-container.actives{
 	transition: visibility 0s;
 	visibility: visible;
 }
 
-.modal-container-add{
-	visibility: hidden;
-	position: fixed;
-	top: 0;
-	width: 100vw;
-	height: 100vh;
-	transition: visibility 0.4s;
-}
-
-.modal-container-add.actives{
-	transition: visibility 0s;
-	visibility: visible;
-}
 
 .overlay {
 	opacity: 0;
@@ -356,10 +392,17 @@ a{
 	transition: opcaity 0.4s ease-out;
 }
 
-.modal-container-add.actives .overlay{
-	opacity: 1;
-	transition: opcaity 0.4s ease-out;
+.modal-container .add-works-modal form select {
+	outline-color: #8EAFA6;
+	padding: 12px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	background-repeat: no-repeat;
+	background-position: right 12px top 50%;
+	background: #FFFFFF;box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);border: none;
+	height: 51px;
 }
+
+/* Block Modal */
 
 .modal-wrapper {
 	background: #fff;
@@ -382,6 +425,8 @@ h3 {
 	margin-bottom: 46px;
 }
 
+/* Bouton Ajouter une photo */
+
 .add-works {
 	width: 237px;
 	height: 36px;
@@ -395,6 +440,8 @@ h3 {
 	margin-top: 32px;
 }
 
+/* Bouton Supprimer la galerie */
+
 .delete-all-works {
 	font-family: 'Syne';
 	font-style: normal;
@@ -403,9 +450,7 @@ h3 {
 	color: #D65353;
 	margin-top: 32px;
 }
-.close-modal{
-	cursor: pointer;
-}
+
 
 .fa-solid, .fas {
 	font-weight: 900;
@@ -415,6 +460,8 @@ h3 {
 	margin-bottom: 10px;
 	color: #000;
 }
+
+/* Modal Galerie Photo - Projet */
 
 .galerie {
 	display: flex;
@@ -432,6 +479,14 @@ h3 {
 	height: 104.08px;
 }
 
+aside div figure {
+	position: relative;
+	margin-right: 9px;
+	margin-bottom: 10px;
+}
+
+/* Icon Poubelle */
+
 .fa-solid.fa-trash-can {
 	color: #fff;
 	background: #000000;
@@ -447,23 +502,7 @@ h3 {
 	padding-top: 2px;
 }
 
-#projet {
-	display: flex;
-	flex-direction: row;
-	color: #000;
-	font-size: 16px;
-	align-items: center;
-	margin-left: 22px;
-	width: 125px;
-	cursor: pointer;
-	margin-bottom: 31px;
-	margin-left: 31px;
-}
-
-.projet {
-	display: flex;
-	justify-content: center;
-}
+/* Connexion */
 
 .login{
 	display: block;
@@ -472,6 +511,8 @@ h3 {
 #edit{
 	margin-right: 11px;
 }
+
+/* Footer */
 
 footer {
 	height: 35px;
@@ -484,11 +525,7 @@ footer {
 	padding: 0 100px;
 }
 
-aside div figure {
-	position: relative;
-	margin-right: 9px;
-	margin-bottom: 10px;
-}
+/* Modal Ajout Photo */
 
 .close-and-return {
 	display: flex;
@@ -593,22 +630,8 @@ option {
 	line-height: 16px;
 }
 
-.cursor{
-	cursor: pointer;
-}
-
 .inactif{
 	display: none;
-}
-
-.modal-container .add-works-modal form select {
-	outline-color: #8EAFA6;
-	padding: 12px;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	background-repeat: no-repeat;
-	background-position: right 12px top 50%;
-	background: #FFFFFF;box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);border: none;
-	height: 51px;
 }
 
 .upload-image-zone label {
@@ -645,6 +668,7 @@ option {
 	display: none;
 }
 
+
 .add-works-modal button.completed {
     background: #1D6154;
 }
@@ -659,4 +683,11 @@ option {
 	border-bottom: 1px solid #B3B3B3;
 	height: 209px;
 
+}
+
+/* Curseurs */
+
+
+.cursor{
+	cursor: pointer;
 }

@@ -1,18 +1,31 @@
 const figuresWorks = document.querySelectorAll("figure.works");
 
+let trashIcons = [];
+let response = [];
+let galerie = [];
+let figure = [];
+
+/* Variable login, mode édition */
 
 const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
-const logout = document.querySelector(".logout");
-const modifier = document.querySelector("#projet")
+
+/* Modal */
+
 const modalContainer = document.querySelector(".modal-container");
 const modalTriggers = document.querySelectorAll(".modal-trigger");
-const modalDelete = document.querySelector(".delete-works-modal");
 const modalAdd = document.querySelector(".add-works-modal");
+
+/* Suppresion, retour, ouverture */
+
+const modalDelete = document.querySelector(".delete-works-modal");
 const deletAllWorksBtn = document.querySelector(".delete-all-works");
 const modalReturn = document.querySelector(".fa-arrow-left");
 const openModalAdd = document.querySelector(".add-works");
+
+/* Gestion des travaux */
+
 const modalInputs = document.querySelectorAll(".add-works-modal input");
 const modalSelects = document.querySelectorAll(".add-works-modal select");
 const select = document.querySelector("select");
@@ -27,7 +40,7 @@ const editGalleryGrid = document.querySelector(".galerie");
 const formAddWorks = document.querySelector(".upload-edit-gallery");
 
 
-
+// identification du token pour afficher le mode édition
 if (userToken) {
     for (let element of hiddenElements) {
       element.classList.remove("hidden");
@@ -35,17 +48,32 @@ if (userToken) {
     login.style.display = "none";
 }
 
+
+// MODALES
+// Faire apparaître et disparaître les modales grâce aux boutons déclencheurs
 modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal));
+
+function toggleModal(){
+    
+  for (let button of modalTriggers) {
+      button.addEventListener("click", function () {
+          modalContainer.classList.remove("actives");
+          if (
+              modalContainer.getAttribute("data-modal") ===
+              button.getAttribute("data-modal")
+          ) {
+              modalContainer.classList.add("actives");
+          }  
+      })
+  }
+}
+
+// Accéder à la modale servant à ajouter un travail
 
 openModalAdd.addEventListener("click", function(){
     modalAdd.classList.remove("inactif");
     modalDelete.classList.add("inactif");
 })
-
-/* modalReturn.addEventListener("click", function(){
-    modalAdd.classList.add("inactif");
-    modalDelete.classList.remove("inactif");
-}) */
 
 function closeModal() {
   modalAdd.classList.add("inactif");
@@ -55,10 +83,8 @@ function closeModal() {
 modalReturn.addEventListener("click", closeModal);
 
 
-let trashIcons = [];
-let response = [];
-let galerie = [];
-let figure = [];
+
+// Prévisualiser l'image uploadée dans la modale
 
 for (let inputImage of inputImages) {
   inputImage.addEventListener("change", function () {
@@ -93,6 +119,8 @@ for (let inputImage of inputImages) {
   });
 }
 
+//  Retirer l'image uploadée dans la modale
+
 function removePreviewImage() {
   document.querySelectorAll(".hidden-to-preview").forEach((e) => {
     e.style.display = "block";
@@ -103,60 +131,75 @@ function removePreviewImage() {
   }
 }
 
+// MODALES GESTION DE TRAVAUX
+// Appel de l'API
+
 async function getWorks() {
   try {
-  const response = await fetch('http://localhost:5678/api/works');
-  const data = await response.json();
+    const response = await fetch('http://localhost:5678/api/works');
+    const data = await response.json();
   // génération des projets via l'api
-  for (let i = 0; i < data.length; i++) {
-    let figure = document.createElement("figure");
-    let img = document.createElement("img"); 
-    let trashIcon = document.createElement("i");
-    let figcaption = document.createElement("figcaption");
-    let galerie = document.querySelector(".galerie");
+    for (let i = 0; i < data.length; i++) {
+      let figure = document.createElement("figure");
+      let img = document.createElement("img"); 
+      let trashIcon = document.createElement("i");
+      let figcaption = document.createElement("figcaption");
+      let galerie = document.querySelector(".galerie");
 
-    figure.setAttribute("category-", data[i].categoryId);
-    figure.setAttribute("data-id", data[i].id);
-    img.classList.add("edit");
-    trashIcon.classList = ("fa-solid" + " " + "fa-trash-can");
-    trashIcon.setAttribute("data-id", data[i].id);
-    img.setAttribute("src", data[i].imageUrl);
-    img.setAttribute("crossorigin", "anonymous");
-    figcaption.textContent = "éditer";
+      figure.setAttribute("category-", data[i].categoryId);
+      figure.setAttribute("data-id", data[i].id);
+      img.classList.add("edit");
+      trashIcon.classList = ("fa-solid" + " " + "fa-trash-can");
+      trashIcon.setAttribute("data-id", data[i].id);
+      img.setAttribute("src", data[i].imageUrl);
+      img.setAttribute("crossorigin", "anonymous");
+      figcaption.textContent = "éditer";
 
-    trashIcons.push(trashIcon);
+      trashIcons.push(trashIcon); //On push chaque trashIcone dans le tableau trashIcons de manière à pouvoir utiliser chaque icone à l'exterieur de la boucle
 
-    galerie.append(figure);
-    figure.append(img, figcaption, trashIcon);
+      galerie.append(figure);
+      figure.append(img, figcaption, trashIcon);
 
-}
-
-initDeleteWorks();
+    }
+    initDeleteWorks();
 } catch (error) {
   console.error(error);
   }
 }
-
 getWorks();
 
+/* Suppression des travaux */
 
-function toggleModal(){
-    
-    for (let button of modalTriggers) {
-        button.addEventListener("click", function () {
-            modalContainer.classList.remove("actives");
-            if (
-                modalContainer.getAttribute("data-modal") ===
-                button.getAttribute("data-modal")
-            ) {
-                modalContainer.classList.add("actives");
-            }  
-        })
-    }
+async function deleteWork(workId) {
+  try {
+    const fetchInit = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+
+    const response = await fetch(
+      `http://localhost:5678/api/works/${workId}`,
+      fetchInit
+    );
+    if (response.ok) {
+      const figures = document.querySelectorAll("figure");
+      for (let figure of figures) {
+        if (figure.getAttribute("data-id") === workId) {
+          figure.remove();
+        }
+      }
+    } else throw new Error("Erreur lors de la suppression de l'élément");
+  } catch (error) {
+    console.error(error);
+  }
 }
-    
+
 function initDeleteWorks() {
+
     // pour un travail
+
     for (let trash of trashIcons) {
       trash.addEventListener("click", function () {
         const workId = trash.getAttribute("data-id");
@@ -166,6 +209,7 @@ function initDeleteWorks() {
   
 
     // pour tous les travaux
+
     deletAllWorksBtn.addEventListener("click", async function () {
 
       if (confirm("Êtes-vous sûr de vouloir supprimer tous les travaux ?")) {
@@ -176,40 +220,11 @@ function initDeleteWorks() {
 
           galleryGrid.innerHTML = "";
           figure.innerHTML = "";
-          console.log("Tous les travaux ont été supprimés");
-
       }
     });
 }
 
-async function deleteWork(workId) {
-    try {
-      const fetchInit = {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${userToken}`,
-        },
-      };
-  
-      const response = await fetch(
-        `http://localhost:5678/api/works/${workId}`,
-        fetchInit
-      );
-      if (response.ok) {
-        const figures = document.querySelectorAll("figure");
-        for (let figure of figures) {
-          if (figure.getAttribute("data-id") === workId) {
-            figure.remove();
-            console.log(
-              `${figure.querySelector("img").alt} a été supprimé avec succès`
-            );
-          }
-        }
-      } else throw new Error("Erreur lors de la suppression de l'élément");
-    } catch (error) {
-      console.error(error);
-    }
-}
+// Ajouter dynamiquement les catégories dans les options de select
 
 function getCategoryOnSelect() {
   fetch("http://localhost:5678/api/categories")
@@ -227,6 +242,8 @@ function getCategoryOnSelect() {
 }
 
 getCategoryOnSelect(); 
+
+// Changer la couleur du boutton de confirmation lorsque les champs sont remplis
 
 function updateConfirmButton() {
   if (
@@ -247,6 +264,8 @@ for (let input of modalInputs) {
 for (let option of modalSelects) {
   option.addEventListener("change", updateConfirmButton);
 }
+
+// Création d'un projet lorsqu'on clique sur le bouton de validation
 
 formAddWorks.addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -293,8 +312,7 @@ formAddWorks.addEventListener("submit", async function (event) {
         }
         removePreviewImage();
         closeModal();
-/*         console.log(`${titleInput.value} a bien été ajouté aux travaux`);
- */     
+
         titleInput.value = "";
         select.value = "no-value";
         editGalleryGrid.innerHTML = "";

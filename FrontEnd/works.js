@@ -1,18 +1,26 @@
-// récupération de l'api
+/* Variable */
 
 let figures = [];
+
 let elementsFilter = [];
+
 let all = [];
+
 let objects = [];
+
 let appartements = [];
+
 let restaurants = [];
+
 let galleryGrid = "" ;
-  
+
+/* Récupération des projets */
+
 fetch('http://localhost:5678/api/works')
 
   .then(response => response.json())
   .then(data => {
-// génération des projets via l'api
+
     for (let i = 0; i < data.length; i++) {
 
         figure = document.createElement("figure");
@@ -38,6 +46,8 @@ fetch('http://localhost:5678/api/works')
 .catch(error => console.error(error));
 
 
+/* Récupération des catégories. */
+
 fetch('http://localhost:5678/api/categories')
   .then(response => response.json())
   .then(data => {
@@ -50,14 +60,16 @@ fetch('http://localhost:5678/api/categories')
       button.innerText = category.name;
       filtres.appendChild(button);
 
-      // Variable Filtres
+
+      /* Variable Filtrage */
+
       elementsFilter =  document.querySelectorAll(".element-filter");
       all = document.querySelector(".all");
       objects = document.querySelector("#category-");
       appartements = document.querySelector("#category-");
       restaurants = document.querySelector("#category-");
       
-      //Filtre
+      /* Filtrage */
       
       for (let element of elementsFilter) {
         element.addEventListener("click", function(){

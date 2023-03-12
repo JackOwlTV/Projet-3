@@ -12,6 +12,8 @@
 	<script src="https://kit.fontawesome.com/af55e32715.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+	<!-- Mode Édition -->
 <div class="edition hidden">
 	
 	<a id="édition" href="#edit-works" data-modal="edit-works" class="modal-trigger">
@@ -22,11 +24,14 @@
 
 </div>
 
+	<!-- Modal -->
 <aside data-modal="edit-works" class="modal-container">
 	<div class="overlay">
 
+		<!-- Galerie Photo -->
+
 			<div class="modal-wrapper delete-works-modal">
-			<i class="fa-solid fa-xmark modal-trigger close-modal"></i>
+			<i class="fa-solid fa-xmark modal-trigger cursor"></i>
 			<h3>Galerie Photo</h3>
 			<figure class="galerie">
 
@@ -35,10 +40,12 @@
 			<h6 class="btn-submit-2 delete-all-works cursor">Supprimer la galerie</h6>
 			</div>
 
+		<!-- Ajout Photo -->
+
 			<div class="modal-wrapper add-works-modal inactif">
 				<div class="close-and-return">
 					<i class="fa-solid fa-arrow-left cursor "></i>
-					<i class="fa-solid fa-xmark modal-trigger close-modal"></i>
+					<i class="fa-solid fa-xmark modal-trigger cursor"></i>
 				</div>
 			
 			<h3>Ajout Photo</h3>
@@ -79,6 +86,7 @@
 </header>
 
 <main>
+
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -90,21 +98,39 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
+
 	<section id="portfolio">
+
 		<div class="projet">	
+
 			<h2>Mes Projets</h2>
+
+			<!-- Bouton Modifier -->
+
 			<a data-modal="edit-works" class="hidden modal-trigger" id="projet" href="#modal1" >
+
 				<i id="edit" class="fa-regular fa-pen-to-square"></i>
 				<p>modifier</p>
+
 			</a>
 		</div>
+
 		<div class="filtres">
+
 			<button class="element-filter all active" >Tous</button>
+
+			<!-- Filtres issues de l'API -->
+
 		</div>
+
 		<div class="gallery">
+
 			<!-- Travaux issues de l'API --> 
+
 		</div>
+
 	</section>
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -115,7 +141,7 @@
 			<input type="email" name="email" id="email">
 			<label for="message">Message</label>
 			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
+			<input  class="cursor"	type="submit" value="Envoyer">
 		</form>
 	</section>
 </main>
