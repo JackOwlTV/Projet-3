@@ -10,6 +10,7 @@ let figure = [];
 const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
+const filtresEdit = document.querySelector(".filtres")
 
 /* Modal */
 
@@ -34,7 +35,7 @@ const titleInput = document.getElementById("title-input");
 const inputImages = document.querySelectorAll(".image-input");
 const previewImages = document.querySelectorAll(".preview-image");
 const confirmAddWorkButton = document.querySelector(".confirm-add-work-button");
-const allowedExtensions = ["jpg", ".jpeg", ".png"];
+const allowedExtensions = ["jpg", "jpeg", "png"];
 const maxFileSize = 4 * 1024 * 1024; //4Mo
 const editGalleryGrid = document.querySelector(".galerie");
 const formAddWorks = document.querySelector(".upload-edit-gallery");
@@ -46,8 +47,8 @@ if (userToken) {
       element.classList.remove("hidden");
     }
     login.style.display = "none";
+    filtresEdit.style.display = "none";
 }
-
 
 // MODALES
 // Faire apparaître et disparaître les modales grâce aux boutons déclencheurs
@@ -170,32 +171,6 @@ getWorks();
 
 /* Suppression des travaux */
 
-async function deleteWork(workId) {
-  try {
-    const fetchInit = {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${userToken}`,
-      },
-    };
-
-    const response = await fetch(
-      `http://localhost:5678/api/works/${workId}`,
-      fetchInit
-    );
-    if (response.ok) {
-      const figures = document.querySelectorAll("figure");
-      for (let figure of figures) {
-        if (figure.getAttribute("data-id") === workId) {
-          figure.remove();
-        }
-      }
-    } else throw new Error("Erreur lors de la suppression de l'élément");
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 function initDeleteWorks() {
 
     // pour un travail
@@ -222,6 +197,32 @@ function initDeleteWorks() {
           figure.innerHTML = "";
       }
     });
+}
+
+async function deleteWork(workId) {
+  try {
+    const fetchInit = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+    };
+
+    const response = await fetch(
+      `http://localhost:5678/api/works/${workId}`,
+      fetchInit
+    );
+    if (response.ok) {
+      const figures = document.querySelectorAll("figure");
+      for (let figure of figures) {
+        if (figure.getAttribute("data-id") === workId) {
+          figure.remove();
+        }
+      }
+    } else throw new Error("Erreur lors de la suppression de l'élément");
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // Ajouter dynamiquement les catégories dans les options de select
@@ -288,6 +289,7 @@ formAddWorks.addEventListener("submit", async function (event) {
     try {
       const response = await fetch(postApi, fetchInit);
       if (response.ok) {
+        const data = await response.json();
         const figure = document.createElement("figure");
         const img = document.createElement("img");
         const figcaption = document.createElement("figcaption");
@@ -299,7 +301,7 @@ formAddWorks.addEventListener("submit", async function (event) {
         };
 
         figure.setAttribute("category-", select.value);
-        figure.setAttribute("data-id", select.value);
+        figure.setAttribute("data-id", data.id);
 
         img.setAttribute("alt", titleInput.value);
         figcaption.innerHTML = titleInput.value;

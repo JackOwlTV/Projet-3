@@ -155,6 +155,7 @@ nav ul li img {
 	margin-bottom: 1em;
 }
 
+
 /* Formulaire de contact */
 
 #contact {
@@ -248,6 +249,7 @@ footer nav ul {
 	justify-content: center;
 	gap: 10px;
 	margin: 51px;
+	margin-top: 0;
 }
 
 button {
@@ -270,6 +272,10 @@ button:hover {
     color: #ffffff;
     border: 1px solid #8EAFA6;
     transition: 0.3s all;
+}
+
+.element-filter{
+	display: block;
 }
 
 .element-filter.\31  {
@@ -317,6 +323,7 @@ a{
 	display: none !important;
 }
 
+
 #édition {
 	display: flex;
 	flex-direction: row;
@@ -345,16 +352,35 @@ a{
 	color: #000;
 	font-size: 16px;
 	align-items: center;
-	margin-left: 22px;
 	width: 125px;
 	cursor: pointer;
 	margin-bottom: 31px;
 	margin-left: 31px;
 }
 
+#modif {
+	display: flex;
+	flex-direction: row;
+	color: #000;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 31px;
+}
+
+#modif2 {
+	display: flex;
+	flex-direction: row;
+	color: #000;
+	font-size: 16px;
+	cursor: pointer;
+	margin-top: 13px;
+	margin-left: 56px;
+}
+
 .projet {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 51px;
 }
 
 /* Modal */

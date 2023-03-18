@@ -59,7 +59,7 @@ function pageload(){
 
         /* Destination lors de l'authentification */
 
-        location.href = "index.html#edit-works";
+        location.href = "index.html";
 
         /* Administrateur */
         
