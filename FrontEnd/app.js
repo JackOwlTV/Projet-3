@@ -10,6 +10,7 @@ let figure = [];
 const userToken = sessionStorage.getItem("token");
 const hiddenElements = document.querySelectorAll(".hidden");
 const login = document.querySelector(".login");
+const logout = document.querySelector(".logout");
 const filtresEdit = document.querySelector(".filtres")
 
 /* Modal */
@@ -49,6 +50,17 @@ if (userToken) {
     login.style.display = "none";
     filtresEdit.style.display = "none";
 }
+
+//  Modale de déconnexion
+logout.addEventListener("click", function () {
+  logout.style.display = "none";
+  login.style.display = "block";
+  sessionStorage.removeItem("token");
+  for (let element of hiddenElements) {
+    element.classList.add("hidden");
+  }
+  location.href = "index.html";
+});
 
 // MODALES
 // Faire apparaître et disparaître les modales grâce aux boutons déclencheurs
